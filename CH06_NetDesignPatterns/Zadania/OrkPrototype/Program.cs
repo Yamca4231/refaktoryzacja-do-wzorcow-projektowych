@@ -28,9 +28,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // Lista orków do walki
-        List<Ork> battleOrks = new List<Ork>();
-
         // Tworzenie oryginalnego orka
         var ork = new Ork
         {
@@ -38,18 +35,16 @@ public class Program
             Strenght = 50,
             Health = 100
         };
+        // Lista orków do walki
+        List<Ork> battleOrks = new List<Ork>();
 
         // Dodanie oryginalnego orka do listy
         battleOrks.Add(ork);
 
-        // Klonowanie orka
-        Ork cloneOrk = ork.copyOrk();
-        Ork cloneOrk2 = ork.copyOrk();
-
-        // Dodanie klonów do listy
-        battleOrks.Add(cloneOrk);
-        battleOrks.Add(cloneOrk2);
+        // Dodawanie 5 kopi orków do listy
+        for(int liczaOrkow=1; liczaOrkow <= 4; liczaOrkow++)
         battleOrks.Add(ork.copyOrk()); // Dodanie kolejnego klona
+
 
         // Wyświetlenie szczegółów orków w konsoli
         foreach (var item in battleOrks)
@@ -58,4 +53,5 @@ public class Program
                 $"Siła {item.Strenght}, Zycie {item.Health}, {item.GetType()}");
         }
     }
+
 }
