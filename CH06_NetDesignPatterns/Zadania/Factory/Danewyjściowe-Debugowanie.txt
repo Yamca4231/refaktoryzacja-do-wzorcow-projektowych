@@ -1,0 +1,8 @@
+﻿„Factory.exe” (CoreCLR: DefaultDomain): załadowano „C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Private.CoreLib.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„Factory.exe” (CoreCLR: clrhost): załadowano „C:\Users\wesol\Desktop\Studia Mgr\3 SEM\WPiAA\refaktoryzacja-do-wzorcow-projektowych-1\CH06_NetDesignPatterns\Zadania\Factory\bin\Debug\net5.0\Factory.dll”. Symbole zostały załadowane.
+„Factory.exe” (CoreCLR: clrhost): załadowano „C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Runtime.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„Factory.exe” (CoreCLR: clrhost): załadowano „C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Collections.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„Factory.exe” (CoreCLR: clrhost): załadowano „C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Console.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„Factory.exe” (CoreCLR: clrhost): załadowano „C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Threading.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„Factory.exe” (CoreCLR: clrhost): załadowano „C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.17\System.Text.Encoding.Extensions.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+Program „[8748] Factory.exe” zakończył działanie z kodem 0 (0x0).
