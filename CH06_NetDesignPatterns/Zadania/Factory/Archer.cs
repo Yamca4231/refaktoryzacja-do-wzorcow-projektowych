@@ -2,15 +2,16 @@
 
 namespace Factory
 {
-    public class Archer : Warrior
+    public class Archer : IWarrior
     {
         public string Name { get; set; }
-        public override string Weapon => "bow";
-        public override int HealthPoints => 80;
-
+        public string Weapon => "bow";
+        public int HealthPoints { get; set; }
+        public int Level { get; set; }
         public Archer(string name)
         {
             Name = name;
+            HealthPoints = 80;
             Level = new Random().Next(1, 11); // Generuje poziom od 1 do 10
         }
     }

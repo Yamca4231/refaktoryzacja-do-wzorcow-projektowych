@@ -2,7 +2,7 @@
 {
     internal class Squad
     {
-        public Warrior CreateSoldier(string type, string name)
+        public IWarrior CreateSoldier(string type, string name)
         {
             switch (type)
             {

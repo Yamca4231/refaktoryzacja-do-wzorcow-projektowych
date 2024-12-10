@@ -4,8 +4,8 @@ using Factory;
 
 
 
-var garnizon = new Squad();
-List<Warrior> warriors = new();
+var Squad = new Squad();
+List<IWarrior> warriors = new();
 
 Tuple<string, string>[] orders = {
     new Tuple<string, string>("infantry", "Maciej"),
@@ -22,7 +22,7 @@ Tuple<string, string>[] orders = {
 
 foreach (var item in orders)
 {
-    warriors.Add(garnizon.CreateSoldier(item.Item1, item.Item2));
+    warriors.Add(Squad.CreateSoldier(item.Item1, item.Item2));
 }
 
 foreach (var warrior in warriors)
