@@ -41,13 +41,4 @@ namespace MessageChains
             }
         }
     }
-   
-
 }
-
-//Masz kod, który wywołuje łańcuch metod z Library.GetBook().GetAuthor().GetName(). Twoim zadaniem jest wprowadzenie nowej metody GetAuthorName w klasie Library, aby zredukować łańcuch wiadomości.
-//Kroki do wykonania:
-// 
-// 1. Wprowadź metodę GetCylinderSize w klasie Car.
-// 1. Przenieś wywołanie zagnieżdżone do nowej metody w klasie Car.
-// 1. Zaktualizuj wywołania metod, aby używały nowej metody.
