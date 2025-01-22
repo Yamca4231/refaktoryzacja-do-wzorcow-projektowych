@@ -1,12 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Repozytorium.Data;
+using MojBlogCMS.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Repozytorium.Repository;
+using MojBlogCMS.Repository;
 using System;
 
-public class EfCoreRepository<T> : IRepository<T> where T : class
+namespace MojBlogCMS.Repository
 {
+
+    public class EfCoreRepository<T> : IRepository<T> where T : class
+    {
         private readonly BlogDbContext _context;
         private DbSet<T> _entities;
 
@@ -58,4 +62,5 @@ public class EfCoreRepository<T> : IRepository<T> where T : class
                 return false;
             }
         }
+    }
 }

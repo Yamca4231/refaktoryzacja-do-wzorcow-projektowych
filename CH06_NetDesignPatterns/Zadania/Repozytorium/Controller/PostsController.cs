@@ -1,81 +1,61 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using Repozytorium.Models;
-using Repozytorium.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using Repozytorium.Data;
 
 
-[Route("api/[controller]")]
-[ApiController]
-public class PostsController : ControllerBase
+namespace Repozytorium.Repository
 {
-    private readonly IRepository<Post> _postRepository;
-
-    public PostsController(IRepository<Post> postRepository)
+    public class EfCoreRepository<T> : IRepository<T> where T : class
     {
-        _postRepository = postRepository;
-    }
+        private readonly BlogDbContext _context;
+        private DbSet<T> _entities;
 
-    // GET: api/posts
-    [HttpGet]
-    public async Task<IActionResult> GetAllPosts()
-    {
-        var posts = await _postRepository.GetAllAsync();
-        return Ok(posts);
-    }
-
-    // GET: api/posts/{id}
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetPostById(int id)
-    {
-        var post = await _postRepository.GetByIdAsync(id);
-        if (post == null)
+        public EfCoreRepository(BlogDbContext context)
         {
-            return NotFound();
-        }
-        return Ok(post);
-    }
-
-    // POST: api/posts
-    [HttpPost]
-    public async Task<IActionResult> CreatePost([FromBody] Post post)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
+            _context = context;
+            _entities = context.Set<T>();
         }
 
-        var newPostId = await _postRepository.AddAsync(post);
-        return CreatedAtAction(nameof(GetPostById), new { id = newPostId }, post);
-    }
+        public async Task<IEnumerable<T>> GetAllAsync() => await _entities.ToListAsync();
 
-    // PUT: api/posts/{id}
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdatePost(int id, [FromBody] Post post)
-    {
-        if (id != post.Id)
+        public async Task<T> GetByIdAsync(int id) => await _entities.FindAsync(id);
+
+        public async Task<int> AddAsync(T entity)
         {
-            return BadRequest();
+            await _entities.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return (int)typeof(T).GetProperty("Id")?.GetValue(entity);
         }
 
-        var result = await _postRepository.UpdateAsync(post);
-        if (!result)
+        public async Task<bool> UpdateAsync(T entity)
         {
-            return NotFound();
+            try
+            {
+                _entities.Update(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
         }
 
-        return NoContent();
-    }
-
-    // DELETE: api/posts/{id}
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletePost(int id)
-    {
-        var result = await _postRepository.DeleteAsync(id);
-        if (!result)
+        public async Task<bool> DeleteAsync(T entity)
         {
-            return NotFound();
-        }
+            try
+            {
+                _entities.Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
 
-        return NoContent();
+                return false;
+            }
+        }
     }
 }
